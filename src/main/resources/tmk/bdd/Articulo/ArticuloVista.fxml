@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="tmk.bdd.Articulo.ArticuloControlador"
+          prefHeight="400.0" prefWidth="600.0"
+          styleClass="grid-pane"
+          stylesheets="@ArticuloEstilo.css"
+          alignment="CENTER"
+          hgap="15" vgap="15">
+
+    <Label text="Administrador de Artículos"
+           GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3"
+           styleClass="titulo" />
+
+    <ListView fx:id="listaArticulos"
+              GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.columnSpan="3"
+              styleClass="lista" />
+
+    <Button text="Añadir Artículo"
+            onAction="#añadirArticulo"
+            GridPane.columnIndex="0" GridPane.rowIndex="3" />
+
+    <Button text="Modificar Artículo"
+            onAction="#modificarArticulo"
+            GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+    <Button text="Eliminar Artículo"
+            onAction="#eliminarArticulo"
+            GridPane.columnIndex="2" GridPane.rowIndex="3" />
+</GridPane>
+

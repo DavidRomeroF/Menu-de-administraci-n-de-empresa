@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.GridPane?>
+<GridPane alignment="CENTER"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="tmk.bdd.MainControlador"
+          styleClass="grid-pane"
+          hgap="15" vgap="15">
+
+    <Label text="Menu de administración de empresa"
+           GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3"
+           styleClass="titulo"/>
+
+    <Button onAction="#navegarAClientes" text="Administrar clientes" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Button onAction="#navegarAArticulos" text="Administrar artículos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Button onAction="#navegarAProveedores" text="Administrar Proveedores" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+    <Button onAction="#navegarAGrupos" text="Administrar Grupos" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <Button onAction="#navegarALinesFacturas" text="Administrar Lines Facturas" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Button onAction="#navegarASucursales" text="Administrar Sucursales" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+    <Button onAction="#navegarAVendedores" text="Administrar Vendedores" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+</GridPane>
+
