@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tmk.bdd.ConexionBDD.ConexionMySQL;
+import tmk.bdd.LanzarPopups;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -45,27 +46,69 @@ public class ModificarControlador {
     }
 
     public void modificarArticulos() throws SQLException {
-        int id,precio,grupo;
-        String nombre,codigo;
+        int id = Integer.parseInt(seccionID.getText().split(" ")[1]);
+        String nombre = campoNombre.getText();
+        String codigo = campoCodigoP.getText();
+        String precioStr = campoPrecio.getText();
+        String grupoStr = campoGrupoPertenece.getText();
 
-        id = Integer.parseInt(seccionID.getText().split(" ")[1]);
-        nombre = campoNombre.getText();
-        precio = Integer.parseInt(campoPrecio.getText());
-        codigo = campoCodigoP.getText();
-        grupo = Integer.parseInt(campoGrupoPertenece.getText());
+        boolean nombreValido = false;
+        boolean precioValido = false;
+        boolean codigoValido = false;
+        boolean grupoValido = false;
 
-        PreparedStatement ps = conexion.prepareStatement("UPDATE articulos SET nombre=?, precio=?, codigo =?, grupo=? WHERE id=?");
-        ps.setString(1, nombre);
-        ps.setInt(2, precio);
-        ps.setString(3, codigo);
-        ps.setInt(4, grupo);
-        ps.setInt(5, id);
-        if (ps.executeUpdate()>=1){
-            System.out.println("Modificación exitosa");
+        int precio = 0;
+        int grupo = 0;
 
-            Stage stage = (Stage) seccionID.getScene().getWindow();
-            stage.close();
+        if (nombre.isBlank()) {
+            LanzarPopups.lanzarError("El campo nombre está vacío");
+        } else {
+            nombreValido = true;
         }
 
+        if (precioStr.isBlank()) {
+            LanzarPopups.lanzarError("El campo precio está vacío");
+        } else {
+            try {
+                precio = Integer.parseInt(precioStr);
+                precioValido = true;
+            } catch (NumberFormatException e) {
+                LanzarPopups.lanzarError("El campo precio debe ser un número entero");
+            }
+        }
+
+        if (codigo.isBlank()) {
+            LanzarPopups.lanzarError("El campo código está vacío");
+        } else {
+            codigoValido = true;
+        }
+
+        if (grupoStr.isBlank()) {
+            LanzarPopups.lanzarError("El campo grupo está vacío");
+        } else {
+            try {
+                grupo = Integer.parseInt(grupoStr);
+                grupoValido = true;
+            } catch (NumberFormatException e) {
+                LanzarPopups.lanzarError("El campo grupo debe ser un número entero");
+            }
+        }
+
+        if (nombreValido && precioValido && codigoValido && grupoValido) {
+            PreparedStatement ps = conexion.prepareStatement(
+                    "UPDATE articulos SET nombre=?, precio=?, codigo=?, grupo=? WHERE id=?"
+            );
+            ps.setString(1, nombre);
+            ps.setInt(2, precio);
+            ps.setString(3, codigo);
+            ps.setInt(4, grupo);
+            ps.setInt(5, id);
+
+            if (ps.executeUpdate() >= 1) {
+                System.out.println("Modificación exitosa");
+                Stage stage = (Stage) seccionID.getScene().getWindow();
+                stage.close();
+            }
+        }
     }
 }
