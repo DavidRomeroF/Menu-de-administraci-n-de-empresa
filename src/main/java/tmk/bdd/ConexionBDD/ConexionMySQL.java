@@ -1,21 +1,34 @@
 package tmk.bdd.ConexionBDD;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class ConexionMySQL {
     private static Connection conexion = null;
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/empresas";
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
 
     static {
-        try {
-            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Conexión establecida automáticamente.");
-        } catch (SQLException e) {
-            System.out.println("Error al conectar: " + e.getMessage());
+        if (conexion == null) {
+            Properties props = new Properties();
+            try (InputStream input = ConexionMySQL.class.getClassLoader().getResourceAsStream("credenciales.properties")) {
+                if (input == null) {
+                    System.out.println("No se encontró el archivo de propiedades.");
+
+                }else {
+                    props.load(input);
+                    String url = props.getProperty("url");
+                    String user = props.getProperty("user");
+                    String password = props.getProperty("password");
+
+                    conexion = DriverManager.getConnection(url, user, password);
+                    System.out.println("Conexión establecida");
+                }
+            } catch (IOException | SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
