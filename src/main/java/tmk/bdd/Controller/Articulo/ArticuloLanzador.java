@@ -1,4 +1,4 @@
-package tmk.bdd.Articulo;
+package tmk.bdd.Controller.Articulo;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class ArticuloLanzador {
     public static void abrirVentanaModal() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(ArticuloLanzador.class.getResource("/tmk/bdd/Articulo/ArticuloVista.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(ArticuloLanzador.class.getResource("/tmk/bdd/Controller/Articulo/ArticuloVista.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage stage = new Stage();

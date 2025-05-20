@@ -12,12 +12,19 @@ module tmk.bdd {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens tmk.bdd.Articulo.VentanaAñadir to javafx.fxml;
-    opens tmk.bdd.Articulo.VentanaModificar to javafx.fxml;
-    opens tmk.bdd to javafx.fxml;
-    exports tmk.bdd;
-    exports tmk.bdd.ConexionBDD;
-    opens tmk.bdd.ConexionBDD to javafx.fxml;
-    exports tmk.bdd.Articulo;
-    opens tmk.bdd.Articulo to javafx.fxml;
+    // Abrir paquetes para que FXMLLoader pueda acceder (reflexión)
+    opens tmk.bdd.Controller.Articulo to javafx.fxml;
+    opens tmk.bdd.Controller.Articulo.VentanaAñadir to javafx.fxml;
+    opens tmk.bdd.Controller.Articulo.VentanaModificar to javafx.fxml;
+    opens tmk.bdd.Controller.Main to javafx.fxml;
+    opens tmk.bdd.Database.ConexionBDD to javafx.fxml;
+    opens tmk.bdd.Model to javafx.fxml;
+
+    // Exportar paquetes para acceso público (opcional, según necesidad)
+    exports tmk.bdd.Controller.Articulo;
+    exports tmk.bdd.Controller.Articulo.VentanaAñadir;
+    exports tmk.bdd.Controller.Articulo.VentanaModificar;
+    exports tmk.bdd.Controller.Main;
+    exports tmk.bdd.Database.ConexionBDD;
+    exports tmk.bdd.Model;
 }

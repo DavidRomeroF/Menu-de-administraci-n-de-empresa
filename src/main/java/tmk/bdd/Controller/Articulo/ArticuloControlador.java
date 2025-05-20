@@ -1,13 +1,11 @@
-package tmk.bdd.Articulo;
+package tmk.bdd.Controller.Articulo;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import tmk.bdd.Articulo.VentanaAñadir.AñadirControlador;
-import tmk.bdd.Articulo.VentanaAñadir.AñadirLanzador;
-import tmk.bdd.Articulo.VentanaModificar.ModificarControlador;
-import tmk.bdd.Articulo.VentanaModificar.ModificarLanzador;
-import tmk.bdd.ConexionBDD.ConexionMySQL;
+import tmk.bdd.Controller.Articulo.VentanaAñadir.AñadirLanzador;
+import tmk.bdd.Controller.Articulo.VentanaModificar.ModificarControlador;
+import tmk.bdd.Controller.Articulo.VentanaModificar.ModificarLanzador;
+import tmk.bdd.Database.ConexionBDD.ConexionMySQL;
 
 import java.sql.*;
 

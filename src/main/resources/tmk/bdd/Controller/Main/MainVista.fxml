@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.GridPane?>
 <GridPane alignment="CENTER"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="tmk.bdd.MainControlador"
+          fx:controller="tmk.bdd.Controller.Main.MainControlador"
           styleClass="grid-pane"
           hgap="15" vgap="15">
 

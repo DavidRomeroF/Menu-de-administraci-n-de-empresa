@@ -1,8 +1,7 @@
-package tmk.bdd;
+package tmk.bdd.Controller.Main;
 
 import javafx.event.ActionEvent;
-import tmk.bdd.Articulo.Articulo;
-import tmk.bdd.Articulo.ArticuloLanzador;
+import tmk.bdd.Controller.Articulo.ArticuloLanzador;
 
 
 public class MainControlador {

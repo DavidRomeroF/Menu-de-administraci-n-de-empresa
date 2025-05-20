@@ -1,4 +1,4 @@
-package tmk.bdd.Articulo;
+package tmk.bdd.Model;
 
 public class Articulo {
     private String nombre;
